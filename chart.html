@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html class="basic-box">
+	<head>
+		<link rel="stylesheet" type="text/css" href="../dojo/resources/dojo.css">
+		<link rel="stylesheet" type="text/css" href="../dijit/themes/claro/claro.css">
+		<link rel="stylesheet" type="text/css" href="css/box.css">
+		<script type="text/javascript" src="../dojo/dojo.js"></script>
+		<script type="text/javascript">
+			require({
+				async: 1,
+				packages: [
+					{name: "dojo", location: "../dojo"},
+					{name: "dojox", location: "../dojox"},
+					{name: "liaison", location: "../liaison"}
+				]
+			}, ["statefulbench/chart"]);
+		</script>
+	</head>
+	<body id="chart" class="claro basic-box" style="overflow:auto;">
+	</body>
+</html>

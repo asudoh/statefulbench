@@ -1,0 +1,17 @@
+{
+	"name": "statefulbench",
+	"version": "0.1.0-dev",
+	"dependencies": {
+		"requirejs": "2.1.x",
+		"dojo": "~1.9.0",
+		"dojox": "~1.9.0",
+		"delite": "asudoh/delite#statefulbench",
+		"liaison": "ibm-js/liaison#3da5e2a915281b706bf37eb4e9107de10320c1e2"
+	},
+	"ignore": [
+		".jshintrc",
+		".gitattributes",
+		"tests",
+		"CONTRIBUTING.md"
+	]
+}

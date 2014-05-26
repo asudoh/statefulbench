@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="/repos/requirejs/require.js" data-main="/repos/"></script>
+		<script type="text/javascript">
+			require([
+				"dcl/dcl",
+				"delite/Stateful",
+				"delite/Invalidating",
+				"liaison/Observable"
+			], function (dcl, Stateful, Invalidating, Observable) {
+				var allResults,
+					results = [],
+					STORAGE_ID = "ObservationBenchResults";
+				try {
+					allResults = JSON.parse(localStorage.getItem(STORAGE_ID));
+				} catch (e) {}
+				if (!Array.isArray(allResults)) {
+					allResults = [];
+				}
+
+				runWatch = function () {
+				};
+
+				runObserve0 = function () {
+				};
+
+				runAddInvalidatingProperties = function () {
+				};
+
+				runObserve1 = function () {
+			results.push({
+				testcase: "Stateful.observe:refreshRendering:" + (Observable.useNative ? "Native" : "Shim"),
+				objects: objectsCount,
+				observedproperties: observedPropertiesCount,
+				mutatedproperties: mutatedpropertiesCount,
+				mutations: mutationsCount,
+				time: end - start
+			});
+			alert(JSON.stringify(results[results.length - 1]));
+				};
+
+				save = function () {
+					allResults.push.apply(allResults, results);
+					results = [];
+					localStorage.setItem(STORAGE_ID, JSON.stringify(allResults));
+				};
+
+				clearUnsaved = function() {
+					results = [];
+				};
+
+				clearAll = function () {
+					allResults = [];
+					results = [];
+					localStorage.setItem(STORAGE_ID, JSON.stringify([]));
+				};
+
+				window.onbeforeunload = function () {
+					save();
+				};
+			});
+		</script>
+	</head>
+	<body>
+		<div>
+			Objects: <input id="objects" type="number" value="4000">
+		</div>
+		<div>
+			Observed properties/object: <input id="observedproperties" type="number" value="16">
+		</div>
+		<div>
+			Mutated properties/object: <input id="mutatedproperties" type="number" value="2">
+		</div>
+		<div>
+			Mutations: <input id="mutations" type="number" value="400">
+		</div>
+		<div>
+			<input type="button" value="Stateful.watch()" onclick="runWatch();">
+			<input type="button" value="Stateful.observe() for watch() use case" onclick="runObserve0();">
+			<input type="button" value="Invalidating.addInvalidatingProperties()" onclick="runAddInvalidatingProperties();">
+			<input type="button" value="Stateful.observe() for refreshRendering() use case" onclick="runObserve1();">
+			<input type="button" value="Save results" onclick="save();">
+			<input type="button" value="Clear unsaved results" onclick="clearUnsaved();">
+			<input type="button" value="Clear all results" onclick="clearAll();">
+		</div>
+	</body>
+</html>

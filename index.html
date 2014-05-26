@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html class="basic-box">
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/basic.css">
+		<link rel="stylesheet" type="text/css" href="css/box.css">
+		<script type="text/javascript" src="../requirejs/require.js" data-main="main"></script>
+	</head>
+	<body class="basic-box">
+		<template>
+			<div class="floating-box">
+				<textarea class="basic-box" style="overflow:auto;" value="{{data}}"></textarea>
+				<div style="position:absolute;top:0;right:0;">
+					<span l-show="{{inprogress}}">
+						{{progress}}% complete.
+					</span>
+					<a target="_blank" href="./chart.html">Chart</a>
+					<input type="button" value="Run!" on-click="{{runSuites}}">
+					<input type="button" value="Clear" on-click="{{clear}}">
+					<input type="button" value="Import" on-click="{{import}}">
+					<input type="button" value="Export" on-click="{{export}}">
+				</div>
+			</div>
+		</template>
+	</body>
+</html>
